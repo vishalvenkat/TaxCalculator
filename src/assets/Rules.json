@@ -1,0 +1,52 @@
+[
+  {
+    "stage" : 1,
+    "BaseTax" : 0,
+    "tax" : 2
+  },
+  {
+    "stage" : 2,
+    "BaseTax" : 200,
+    "tax" : 3.5
+  },
+  {
+    "stage" : 3,
+    "BaseTax" : 550,
+    "tax" : 7
+  },
+  {
+    "stage" : 4,
+    "BaseTax" : 3350,
+    "tax" : 11.5
+  },
+  {
+    "stage" : 5,
+    "BaseTax" : 7950,
+    "tax" : 15
+  },
+  {
+    "stage" : 6,
+    "BaseTax" : 13950,
+    "tax" : 18
+  },
+  {
+    "stage" : 7,
+    "BaseTax" : 21150,
+    "tax" : 19
+  },
+  {
+    "stage" : 8,
+    "BaseTax" : 28750,
+    "tax" : 19.5
+  },
+  {
+    "stage" : 9,
+    "BaseTax" : 36550,
+    "tax" : 20
+  },
+  {
+    "stage" : 10,
+    "BaseTax" : 44550,
+    "tax" : 22
+  }
+]

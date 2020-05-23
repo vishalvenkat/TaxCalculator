@@ -1,7 +1,9 @@
-img {
-  width: 50%;
-  height: 30%;
+.wrong-input {
+  color: red;
 }
-.image-division {
-  margin-top: 10%;
+.correct-input {
+  color: black;
+}
+label {
+  font-family: "Arial Black", sans-serif;
 }

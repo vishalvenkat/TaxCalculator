@@ -1,0 +1,42 @@
+[
+  {
+    "Amount" : 320000,
+    "stage" : 10
+  },
+  {
+    "Amount" : 280000,
+    "stage" : 9
+  },
+  {
+    "Amount" : 240000,
+    "stage" : 8
+  },
+  {
+    "Amount" : 200000,
+    "stage" : 7
+  },
+  {
+    "Amount" : 160000,
+    "stage" : 6
+  },
+  {
+    "Amount" : 120000,
+    "stage" : 5
+  },
+  {
+    "Amount" : 80000,
+    "stage" : 4
+  },
+  {
+    "Amount" : 40000,
+    "stage" : 3
+  },
+  {
+    "Amount" : 30000,
+    "stage" : 2
+  },
+  {
+    "Amount" : 20000,
+    "stage" : 1
+  }
+]

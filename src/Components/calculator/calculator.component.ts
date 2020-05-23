@@ -1,41 +1,74 @@
 import { Component, OnInit } from '@angular/core';
-
+import {TaxRulesService} from "../../Service/CalculateTax/tax-rules.service";
 @Component({
   selector: 'app-calculator',
+  styleUrls: ['./calculator.component.css'],
   template: `
       <div class="Block">
-          <form>
-              Enter your annual salary: <input type="number" name="income"  (keyup)="taxAmount = calculateSalary($event)"/><br>
-              Tax to be paid: {{getTaxAmount()}}<br />
-          </form>
-          <div *ngIf="!image">Click <mat-icon (click) = "image = imageLocation">info</mat-icon> to view how your tax will be calculated.</div>
-          <div *ngIf="image" class="image-division">
-              <img [src]="image">
-          </div>
-          
+          <mat-card>
+              <mat-card-content>
+                  <form>
+                      <label for="salary">Enter your annual pay</label>
+                      <input type="text" name="salary" id="salary" #salaryInput [ngClass]='bntStyle'
+                             (keyup) ="calculateSalary($event)" (keydown)="calculateSalary($event)"><br/>{{validationText}}<br/>
+                  </form>
+                  <button color="primary" mat-raised-button (click)="getTaxamount(salaryInput.value)">Calculate Tax</button><br />
+                  {{taxAmount}}
+              </mat-card-content>
+          </mat-card>
       </div>
-  `,
-  styleUrls: ['./calculator.component.css']
+  `
 })
 export class CalculatorComponent implements OnInit {
-  image : string;
-  imageLocation = '../../assets/Images/InfoImage.jpg';
 
-  taxAmount = 0;
-  constructor() { }
+  validationText : string;
+  bntStyle : string;
+test;
+salary: number;
+  taxAmount;
+  constructor(dependency : TaxRulesService) {
+     this.test = dependency;
+  }
 
   ngOnInit() {
   }
   // Set the location of the image when clicked.
-  setImage() {
-    this.image = this.imageLocation;
-  }
+
 calculateSalary(event) {
-    // Todo: Add business logic here to calculate the Tax amount.
-  // This code just returns the actual salary entered in the box.
-    return event.target.value;
+   if(isNaN(event.target.value) || this.checkDecimal(event.target.value)) {
+     this.showInvalidMessage();
+  } else {
+     this.showValidMessage(event);
+   }
+   // return event.target.value;
 }
-getTaxAmount() {
-    return this.taxAmount;
+checkDecimal(value) {
+    let number = 0;
+    let flag = false;
+for (let i =0; i< value.length; i++) {
+  if(value.charAt(i) === '.') flag = true;
+  if(flag) number++;
+}
+    return number > 3;
+}
+
+showInvalidMessage() {
+  this.bntStyle = 'wrong-input';
+  this.validationText = 'Enter valid number';
+}
+showValidMessage(event) {
+  this.bntStyle = 'correct-input';
+  this.validationText = '';
+  this.salary = event.target.value;
+}
+getTaxamount(salaryInput) {
+    if (!isNaN(salaryInput)){
+      this.taxAmount = this.makeTaxAmount(this.test.getTaxAmount(salaryInput));
+    }
+
+    //return this.taxAmount;
+}
+makeTaxAmount(Amount) {
+    return "You need to pay : $" + Amount + " as annual tax amount";
 }
 }
